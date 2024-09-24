@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_PROFILE: docker
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: habargde
+      PGHOST: postgres
+      PGPORT: 5432
+      POSTGRES_DB: my_bpm
+      PORT: 8081
+      MONGO_USER: mongo
+      MONGO_PASSWORD:
+      MGHOST: mongo
+      MGPORT: 27017
+      MONGO_DB: my_bpm
+    depends_on:
+      - postgres
+      - mongo
+
+  postgres:
+    image: postgres:16.2
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: habargde
+      POSTGRES_DB: my_bpm
+    ports:
+      - "5432:5432"
+
+  mongo:
+    image: mongo:7.0.0
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongo
+      MONGO_INITDB_ROOT_PASSWORD:
+    ports:
+      - "27017:27017"
