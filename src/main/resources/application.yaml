@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: meppidoupkteiphhqnda
+  profiles:
+    active: ${SPRING_PROFILE}
+  datasource:
+    password: ${POSTGRES_PASSWORD}
+    url: jdbc:postgresql://${PGHOST}:${PGPORT}/${POSTGRES_DB}
+    username: ${POSTGRES_USER}
+    driver-class-name: org.postgresql.Driver
+  data:
+    mongodb:
+      username: ${MONGO_USER}
+      password:
+      uri: mongodb://${MGHOST}:${MGPORT}/${MONGO_DB}
+
+server:
+  error:
+    include-message: always
+    include-binding-errors: always
+  port: ${PORT}
+
