@@ -13,6 +13,8 @@ spring:
       username: ${MONGO_USER}
       password:
       uri: mongodb://${MGHOST}:${MGPORT}/${MONGO_DB}
+    jdbc:
+      dialect: postgresql
 
 server:
   error:
