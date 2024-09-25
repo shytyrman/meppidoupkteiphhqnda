@@ -10,4 +10,6 @@ import java.util.Optional;
 public interface PersonRepository extends CrudRepository<Person, Long> {
 
     public Optional<Person> findByPhoneNumber(String phoneNumber);
+    public Boolean existsByPhoneNumber(String phoneNumber);
+    public void deleteByPhoneNumber(String phoneNumber);
 }

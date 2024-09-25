@@ -7,6 +7,7 @@ import com.example.meppidoupkteiphhqnda.repository.PersonRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -34,8 +35,18 @@ public class BasicPersonCrudService implements PersonCrudService{
     }
 
     @Override
+    @Transactional
     public void delete(PersonByDatas request) {
 
+        Long requestId = request.id();
+        String requestPhoneNumber = request.phoneNumber();
+
+        if (requestId != null && repository.existsById(requestId)) {
+            repository.deleteById(requestId);
+        }
+        else if (requestPhoneNumber != null && repository.existsByPhoneNumber(requestPhoneNumber)) {
+            repository.deleteByPhoneNumber(requestPhoneNumber);
+        }
     }
 
     @Override

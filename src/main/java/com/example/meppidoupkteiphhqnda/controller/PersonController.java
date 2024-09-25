@@ -30,4 +30,13 @@ public class PersonController {
 
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
+
+    @DeleteMapping(path = "/delete")
+    public ResponseEntity<?> delete(@RequestBody PersonByDatas request) {
+
+        personCrudService.delete(request);
+
+        //To-Do ResponceMessageClass
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
 }
