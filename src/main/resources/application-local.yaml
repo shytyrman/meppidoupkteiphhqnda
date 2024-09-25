@@ -9,7 +9,7 @@ spring:
   data:
     mongodb:
       username: mongo
-      password:
+      password: password
       uri: mongodb://localhost:27017/my_bpm
 
 server:
