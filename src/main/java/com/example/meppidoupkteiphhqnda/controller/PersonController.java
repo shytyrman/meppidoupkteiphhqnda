@@ -2,6 +2,7 @@ package com.example.meppidoupkteiphhqnda.controller;
 
 import com.example.meppidoupkteiphhqnda.model.Person;
 import com.example.meppidoupkteiphhqnda.model.request.PersonByDatas;
+import com.example.meppidoupkteiphhqnda.model.request.UpdatePersonByDatas;
 import com.example.meppidoupkteiphhqnda.repository.PersonRepository;
 import com.example.meppidoupkteiphhqnda.service.PersonCrud.PersonCrudService;
 import com.example.meppidoupkteiphhqnda.service.PersonService;
@@ -37,6 +38,14 @@ public class PersonController {
         personCrudService.delete(request);
 
         //To-Do ResponceMessageClass
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    @PostMapping(path = "/update")
+    public ResponseEntity<?> update(@RequestBody UpdatePersonByDatas request) {
+
+        personCrudService.update(request);
+
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 }

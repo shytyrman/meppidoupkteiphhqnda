@@ -3,6 +3,7 @@ package com.example.meppidoupkteiphhqnda.service.PersonCrud;
 import com.example.meppidoupkteiphhqnda.model.Person;
 import com.example.meppidoupkteiphhqnda.model.request.Filter;
 import com.example.meppidoupkteiphhqnda.model.request.PersonByDatas;
+import com.example.meppidoupkteiphhqnda.model.request.UpdatePersonByDatas;
 import com.example.meppidoupkteiphhqnda.repository.PersonRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
@@ -55,7 +56,21 @@ public class BasicPersonCrudService implements PersonCrudService{
     }
 
     @Override
-    public void update(PersonByDatas request) {
+    public void update(UpdatePersonByDatas request) {
+
+        Long requestId = request.searchId();
+        String requestPhoneNumber = request.searchPhoneNumber();
+
+        if (repository.existsById(requestId) || repository.existsByPhoneNumber(requestPhoneNumber)) {
+            repository.update(
+                    request.changeFullName(),
+                    request.changeBirthday(),
+                    request.changePhoneNumber(),
+                    request.changePhoneNumberAdditional(),
+                    requestId,
+                    requestPhoneNumber
+            );
+        }
 
     }
 }
