@@ -1,15 +1,14 @@
 package com.example.meppidoupkteiphhqnda.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Generated;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.IdGeneratorType;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -18,16 +17,24 @@ import java.time.LocalDateTime;
 public class Person {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "person_seq"
+    )
+    @SequenceGenerator(
+            name = "person_seq",
+            sequenceName = "person_sequence",
+            allocationSize = 1
+    )
     private Long id;
 
     private String fullName;
-    private LocalDateTime birthday;
+    private LocalDate birthday;
     private String phoneNumber;
     private String phoneNumberAdditional;
     private LocalDateTime createdAt;
 
-    public Person(String fullName, LocalDateTime birthday, String phoneNumber, String phoneNumberAdditional) {
+    public Person(String fullName, LocalDate birthday, String phoneNumber, String phoneNumberAdditional) {
         this.fullName = fullName;
         this.birthday = birthday;
         this.phoneNumber = phoneNumber;
