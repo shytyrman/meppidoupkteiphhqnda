@@ -2,9 +2,8 @@ package com.example.meppidoupkteiphhqnda.controller;
 
 import com.example.meppidoupkteiphhqnda.model.Person;
 import com.example.meppidoupkteiphhqnda.model.request.Filter;
-import com.example.meppidoupkteiphhqnda.model.request.PersonByDatas;
-import com.example.meppidoupkteiphhqnda.model.request.UpdatePersonByDatas;
-import com.example.meppidoupkteiphhqnda.repository.PersonRepository;
+import com.example.meppidoupkteiphhqnda.model.request.Person.PersonByDatas;
+import com.example.meppidoupkteiphhqnda.model.request.Person.UpdatePersonByDatas;
 import com.example.meppidoupkteiphhqnda.service.PersonCrud.PersonCrudService;
 import com.example.meppidoupkteiphhqnda.service.PersonService;
 import lombok.AllArgsConstructor;
@@ -18,7 +17,6 @@ import java.util.List;
 @AllArgsConstructor
 public class PersonController {
 
-    private PersonRepository personRepository;
     private PersonCrudService personCrudService;
     private PersonService personService;
 

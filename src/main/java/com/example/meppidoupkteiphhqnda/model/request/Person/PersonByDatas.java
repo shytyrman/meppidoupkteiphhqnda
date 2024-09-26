@@ -1,4 +1,4 @@
-package com.example.meppidoupkteiphhqnda.model.request;
+package com.example.meppidoupkteiphhqnda.model.request.Person;
 
 public record PersonByDatas(
         Long id,

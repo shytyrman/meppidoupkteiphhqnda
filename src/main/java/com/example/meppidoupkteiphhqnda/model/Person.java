@@ -2,18 +2,13 @@ package com.example.meppidoupkteiphhqnda.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Generated;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.IdGeneratorType;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
 @Data
-@NoArgsConstructor
 public class Person {
 
     @Id
@@ -39,6 +34,10 @@ public class Person {
         this.birthday = birthday;
         this.phoneNumber = phoneNumber;
         this.phoneNumberAdditional = phoneNumberAdditional;
+        this.createdAt = LocalDateTime.now();
+    }
+
+    public Person() {
         this.createdAt = LocalDateTime.now();
     }
 }

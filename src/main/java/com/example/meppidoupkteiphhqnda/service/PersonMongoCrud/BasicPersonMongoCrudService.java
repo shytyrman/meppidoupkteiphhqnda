@@ -1,10 +1,11 @@
-package com.example.meppidoupkteiphhqnda.service.PersonCrud;
+package com.example.meppidoupkteiphhqnda.service.PersonMongoCrud;
 
-import com.example.meppidoupkteiphhqnda.model.Person;
+import com.example.meppidoupkteiphhqnda.model.PersonMongo;
 import com.example.meppidoupkteiphhqnda.model.request.Filter;
-import com.example.meppidoupkteiphhqnda.model.request.Person.PersonByDatas;
 import com.example.meppidoupkteiphhqnda.model.request.Person.UpdatePersonByDatas;
-import com.example.meppidoupkteiphhqnda.repository.PersonRepository;
+import com.example.meppidoupkteiphhqnda.model.request.PersonMongo.PersonMongoByDatas;
+import com.example.meppidoupkteiphhqnda.model.request.PersonMongo.UpdatePersonMongoByDatas;
+import com.example.meppidoupkteiphhqnda.repository.PersonMongoRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,20 +15,21 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class BasicPersonCrudService implements PersonCrudService{
+public class BasicPersonMongoCrudService implements PersonMongoCrudService{
 
-    private PersonRepository repository;
+    private PersonMongoRepository repository;
+
     @Override
-    public Person find(PersonByDatas request) {
+    public PersonMongo find(PersonMongoByDatas request) {
 
-        Long requestId = request.id();
+        String requestId = request.id();
         String requestPhoneNumber = request.phoneNumber();
 
         if (requestId == null && requestPhoneNumber == null) {
             return null;
         }
 
-        Person result = null;
+        PersonMongo result = null;
 
         if (requestId != null && repository.existsById(requestId)) {
             result = repository.findById(requestId).orElseThrow(EntityNotFoundException::new);
@@ -41,9 +43,9 @@ public class BasicPersonCrudService implements PersonCrudService{
 
     @Override
     @Transactional
-    public void delete(PersonByDatas request) {
+    public void delete(PersonMongoByDatas request) {
 
-        Long requestId = request.id();
+        String requestId = request.id();
         String requestPhoneNumber = request.phoneNumber();
 
         if (requestId == null && requestPhoneNumber == null) {
@@ -59,34 +61,12 @@ public class BasicPersonCrudService implements PersonCrudService{
     }
 
     @Override
-    public List<Person> findAll(Filter filter) {
-        return repository.findAll(filter.limit(), filter.offset());
+    public List<PersonMongo> findAll(Filter filter) {
+        return null;
     }
 
     @Override
-    public void update(UpdatePersonByDatas request) {
+    public void update(UpdatePersonMongoByDatas request) {
 
-        Long requestId = request.searchId();
-        String requestPhoneNumber = request.searchPhoneNumber();
-
-        if (requestId == null && requestPhoneNumber == null) {
-            return;
-        }
-
-        if ((requestId != null && repository.existsById(requestId)) || (requestPhoneNumber != null && repository.existsByPhoneNumber(requestPhoneNumber))) {
-            updateBy(request);
-        }
-
-    }
-
-    private void updateBy(UpdatePersonByDatas request) {
-        repository.update(
-                request.changeFullName(),
-                request.changeBirthday(),
-                request.changePhoneNumber(),
-                request.changePhoneNumberAdditional(),
-                request.searchId(),
-                request.searchPhoneNumber()
-        );
     }
 }

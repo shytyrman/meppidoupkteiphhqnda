@@ -2,8 +2,8 @@ package com.example.meppidoupkteiphhqnda.service.PersonCrud;
 
 import com.example.meppidoupkteiphhqnda.model.Person;
 import com.example.meppidoupkteiphhqnda.model.request.Filter;
-import com.example.meppidoupkteiphhqnda.model.request.PersonByDatas;
-import com.example.meppidoupkteiphhqnda.model.request.UpdatePersonByDatas;
+import com.example.meppidoupkteiphhqnda.model.request.Person.PersonByDatas;
+import com.example.meppidoupkteiphhqnda.model.request.Person.UpdatePersonByDatas;
 
 import java.util.List;
 

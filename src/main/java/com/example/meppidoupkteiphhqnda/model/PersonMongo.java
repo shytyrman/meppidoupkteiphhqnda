@@ -9,11 +9,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Document(collection = "person")
 @Data
-@NoArgsConstructor
 public class PersonMongo {
 
     @Id
@@ -31,6 +29,10 @@ public class PersonMongo {
         this.birthday = birthday;
         this.phoneNumber = phoneNumber;
         this.phoneNumberAdditional = phoneNumberAdditional;
+        this.createdAt = LocalDateTime.now();
+    }
+
+    public PersonMongo() {
         this.createdAt = LocalDateTime.now();
     }
 }

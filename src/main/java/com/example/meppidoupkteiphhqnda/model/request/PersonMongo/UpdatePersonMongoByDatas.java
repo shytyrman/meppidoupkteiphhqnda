@@ -1,13 +1,13 @@
-package com.example.meppidoupkteiphhqnda.model.request;
+package com.example.meppidoupkteiphhqnda.model.request.PersonMongo;
 
 import java.time.LocalDate;
 
-public record UpdatePersonByDatas(
+public record UpdatePersonMongoByDatas(
         String changeFullName,
         LocalDate changeBirthday,
         String changePhoneNumber,
         String changePhoneNumberAdditional,
-        Long searchId,
+        String searchId,
         String searchPhoneNumber
 ) {
 }
