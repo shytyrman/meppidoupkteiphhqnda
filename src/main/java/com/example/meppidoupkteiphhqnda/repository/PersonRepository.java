@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -23,4 +24,8 @@ public interface PersonRepository extends CrudRepository<Person, Long> {
     @Query("UPDATE Person p SET p.fullName=IFNULL(:fullName, p.fullName), p.birthday=IFNULL(:birthday, p.birthday), p.phoneNumber=IFNULL(:phoneNumber, p.phoneNumber), p.phoneNumberAdditional=IFNULL(:phoneNumberAdditional, p.phoneNumberAdditional) WHERE p.id=:searchId OR p.phoneNumber=:searchNumber")
     public void update(@Param("fullName") String fullName, @Param("birthday") LocalDate birthday, @Param("phoneNumber")
     String phoneNumber, @Param("phoneNumberAdditional") String phoneNumberAdditional, @Param("searchId") Long id, @Param("searchNumber") String number);
+
+    @Query(value = "SELECT * FROM person LIMIT ? OFFSET ?",
+            nativeQuery = true)
+    public List<Person> findAll(Integer limit, Integer offset);
 }

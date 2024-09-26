@@ -52,7 +52,7 @@ public class BasicPersonCrudService implements PersonCrudService{
 
     @Override
     public List<Person> findAll(Filter filter) {
-        return null;
+        return repository.findAll(filter.limit(), filter.offset());
     }
 
     @Override
