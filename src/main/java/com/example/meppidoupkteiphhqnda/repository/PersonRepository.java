@@ -22,6 +22,9 @@ public interface PersonRepository extends CrudRepository<Person, Long> {
     @Modifying
     @Transactional
     @Query("UPDATE Person p SET p.fullName=IFNULL(:fullName, p.fullName), p.birthday=IFNULL(:birthday, p.birthday), p.phoneNumber=IFNULL(:phoneNumber, p.phoneNumber), p.phoneNumberAdditional=IFNULL(:phoneNumberAdditional, p.phoneNumberAdditional) WHERE p.id=:searchId OR p.phoneNumber=:searchNumber")
+//    @Query(value = "UPDATE person SET full_name=coalesce(?1, full_name), birthday=coalesce(?2, birthday), phone_number=coalesce(?3, phone_number), " +
+//            "phone_number_additional=coalesce(?4, phone_number_additional) " +
+//            "WHERE id=?5 OR phone_number=?6", nativeQuery = true)
     public void update(@Param("fullName") String fullName, @Param("birthday") LocalDate birthday, @Param("phoneNumber")
     String phoneNumber, @Param("phoneNumberAdditional") String phoneNumberAdditional, @Param("searchId") Long id, @Param("searchNumber") String number);
 

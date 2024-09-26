@@ -23,12 +23,16 @@ public class BasicPersonCrudService implements PersonCrudService{
         Long requestId = request.id();
         String requestPhoneNumber = request.phoneNumber();
 
+        if (requestId == null && requestPhoneNumber == null) {
+            return null;
+        }
+
         Person result = null;
 
-        if (requestId != null) {
+        if (requestId != null && repository.existsById(requestId)) {
             result = repository.findById(requestId).orElseThrow(EntityNotFoundException::new);
         }
-        else if (requestPhoneNumber != null) {
+        else if (requestPhoneNumber != null && repository.existsByPhoneNumber(requestPhoneNumber)) {
             result = repository.findByPhoneNumber(requestPhoneNumber).orElseThrow(EntityNotFoundException::new);
         }
 
@@ -41,6 +45,10 @@ public class BasicPersonCrudService implements PersonCrudService{
 
         Long requestId = request.id();
         String requestPhoneNumber = request.phoneNumber();
+
+        if (requestId == null && requestPhoneNumber == null) {
+            return;
+        }
 
         if (requestId != null && repository.existsById(requestId)) {
             repository.deleteById(requestId);
@@ -61,16 +69,24 @@ public class BasicPersonCrudService implements PersonCrudService{
         Long requestId = request.searchId();
         String requestPhoneNumber = request.searchPhoneNumber();
 
-        if (repository.existsById(requestId) || repository.existsByPhoneNumber(requestPhoneNumber)) {
-            repository.update(
-                    request.changeFullName(),
-                    request.changeBirthday(),
-                    request.changePhoneNumber(),
-                    request.changePhoneNumberAdditional(),
-                    requestId,
-                    requestPhoneNumber
-            );
+        if (requestId == null && requestPhoneNumber == null) {
+            return;
         }
 
+        if ((requestId != null && repository.existsById(requestId)) || (requestPhoneNumber != null && repository.existsByPhoneNumber(requestPhoneNumber))) {
+            updateBy(request);
+        }
+
+    }
+
+    private void updateBy(UpdatePersonByDatas request) {
+        repository.update(
+                request.changeFullName(),
+                request.changeBirthday(),
+                request.changePhoneNumber(),
+                request.changePhoneNumberAdditional(),
+                request.searchId(),
+                request.searchPhoneNumber()
+        );
     }
 }

@@ -55,7 +55,12 @@ public class PersonController {
     @PostMapping(path = "/update")
     public ResponseEntity<?> update(@RequestBody UpdatePersonByDatas request) {
 
-        personCrudService.update(request);
+        try {
+            personCrudService.update(request);
+        }
+        catch (Exception e) {
+            throw new IllegalStateException(e.getMessage());
+        }
 
         return ResponseEntity.status(HttpStatus.OK).build();
     }
