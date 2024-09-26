@@ -1,10 +1,9 @@
 package com.example.meppidoupkteiphhqnda.controller;
 
-import com.example.meppidoupkteiphhqnda.model.Person;
 import com.example.meppidoupkteiphhqnda.model.PersonMongo;
 import com.example.meppidoupkteiphhqnda.model.request.Filter;
-import com.example.meppidoupkteiphhqnda.model.request.Person.PersonByDatas;
 import com.example.meppidoupkteiphhqnda.model.request.PersonMongo.PersonMongoByDatas;
+import com.example.meppidoupkteiphhqnda.model.request.PersonMongo.UpdatePersonMongoByDatas;
 import com.example.meppidoupkteiphhqnda.service.PersonMongoCrud.PersonMongoCrudService;
 import com.example.meppidoupkteiphhqnda.service.PersonMongoService;
 import lombok.AllArgsConstructor;
@@ -50,6 +49,19 @@ public class PersonMongoController {
         personMongoCrudService.delete(request);
 
         //To-Do ResponceMessageClass
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    @PostMapping(path = "/update")
+    public ResponseEntity<?> update(@RequestBody UpdatePersonMongoByDatas request) {
+
+        try {
+            personMongoCrudService.update(request);
+        }
+        catch (Exception e) {
+            throw new IllegalStateException(e.getMessage());
+        }
+
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 }

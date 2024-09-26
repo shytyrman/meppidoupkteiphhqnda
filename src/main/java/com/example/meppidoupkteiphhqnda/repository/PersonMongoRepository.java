@@ -3,6 +3,7 @@ package com.example.meppidoupkteiphhqnda.repository;
 import com.example.meppidoupkteiphhqnda.model.PersonMongo;
 import org.springframework.data.mongodb.repository.Aggregation;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
@@ -15,4 +16,6 @@ public interface PersonMongoRepository extends MongoRepository<PersonMongo, Stri
     public Optional<PersonMongo> findByPhoneNumber(String phoneNumber);
     public Boolean existsByPhoneNumber(String phoneNumber);
     public void deleteByPhoneNumber(String phoneNumber);
+    @Query("{'name' :'?1'}")
+    PersonMongo findPersonMongoByName(String name);
 }
