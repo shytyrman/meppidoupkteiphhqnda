@@ -8,6 +8,8 @@ import com.example.meppidoupkteiphhqnda.model.request.PersonMongo.UpdatePersonMo
 import com.example.meppidoupkteiphhqnda.repository.PersonMongoRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,6 +20,7 @@ import java.util.List;
 public class BasicPersonMongoCrudService implements PersonMongoCrudService{
 
     private PersonMongoRepository repository;
+    private MongoTemplate mongoTemplate;
 
     @Override
     public PersonMongo find(PersonMongoByDatas request) {
@@ -62,7 +65,10 @@ public class BasicPersonMongoCrudService implements PersonMongoCrudService{
 
     @Override
     public List<PersonMongo> findAll(Filter filter) {
-        return null;
+        if (filter.limit() == null || filter.offset() == null) {
+            throw new IllegalStateException("Fields: limit, offset must not be null!");
+        }
+        return mongoTemplate.find(new Query().limit(filter.limit()).skip(filter.offset()), PersonMongo.class);
     }
 
     @Override
