@@ -35,6 +35,8 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testImplementation('org.testng:testng:7.9.0')
+    testRuntimeOnly("org.junit.support:testng-engine:1.0.4")
 }
 
 tasks.named('test') {
