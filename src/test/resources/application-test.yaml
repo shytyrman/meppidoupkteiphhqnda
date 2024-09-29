@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    embedded-database-connection: h2
+    url: jdbc:h2:mem:my_bpm
+    driver-class-name: org.h2.Driver
+    username: h2
+    password: password
+  data:
+    jdbc:
+      dialect: h2
+    mongodb:
+      uri: mongodb://localhost:27017/test
+server:
+  port: 8080

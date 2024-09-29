@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: meppidoupkteiphhqnda
+  datasource:
+    password: habargde
+    url: jdbc:postgresql://localhost:5432/my_bpm
+    username: postgres
+    driver-class-name: org.postgresql.Driver
+  data:
+    mongodb:
+      username: mongo
+      password: password
+      uri: mongodb://localhost:27017/my_bpm
+
+server:
+  error:
+    include-message: always
+    include-binding-errors: always
+  port: 8081

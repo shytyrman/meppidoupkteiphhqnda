@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: sampleApplication
+  data:
+    mongodb:
+      username: ${MONGO_USER}
+      password: ${MONGO_PASSWORD}
+      uri: mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MGHOST}:${MGPORT}/${MONGO_DB}?authSource=admin
+server:
+  port: 8081
