@@ -5,7 +5,6 @@ import com.example.meppidoupkteiphhqnda.model.request.Filter;
 import com.example.meppidoupkteiphhqnda.model.request.Person.PersonByDatas;
 import com.example.meppidoupkteiphhqnda.model.request.Person.UpdatePersonByDatas;
 import com.example.meppidoupkteiphhqnda.service.PersonCrud.PersonCrudService;
-import com.example.meppidoupkteiphhqnda.service.PersonService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,12 +17,6 @@ import java.util.List;
 public class PersonController {
 
     private PersonCrudService personCrudService;
-    private PersonService personService;
-
-    @GetMapping(path = "/make")
-    public void saveBasic() {
-        personService.make();
-    }
 
     @GetMapping(path = "/get")
     public ResponseEntity<?> get(@RequestBody PersonByDatas request) {

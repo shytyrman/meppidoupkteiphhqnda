@@ -5,7 +5,6 @@ import com.example.meppidoupkteiphhqnda.model.request.Filter;
 import com.example.meppidoupkteiphhqnda.model.request.PersonMongo.PersonMongoByDatas;
 import com.example.meppidoupkteiphhqnda.model.request.PersonMongo.UpdatePersonMongoByDatas;
 import com.example.meppidoupkteiphhqnda.service.PersonMongoCrud.PersonMongoCrudService;
-import com.example.meppidoupkteiphhqnda.service.PersonMongoService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,13 +18,7 @@ import java.util.List;
 @RequestMapping(path = "/mongo")
 public class PersonMongoController {
 
-    private PersonMongoService personMongoService;
     private PersonMongoCrudService personMongoCrudService;
-
-    @GetMapping(path = "/make")
-    public void saveBasic() {
-        personMongoService.make();
-    }
 
     @GetMapping(path = "/get")
     public ResponseEntity<?> get(@RequestBody PersonMongoByDatas request) {
