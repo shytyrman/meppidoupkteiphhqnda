@@ -8,7 +8,7 @@ RUN gradle build --no-daemon -x test
 
 FROM openjdk:17-jdk-slim
 
-ENV SPRING_PROFILE=docker
+ENV SPRING_PROFILE=local
 ENV POSTGRES_USER=postgres
 ENV POSTGRES_PASSWORD=habargde
 ENV PGHOST=localhost
