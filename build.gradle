@@ -37,6 +37,9 @@ dependencies {
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     testImplementation('org.testng:testng:7.9.0')
     testRuntimeOnly("org.junit.support:testng-engine:1.0.4")
+    //embedded databases for testing
+    testImplementation group: 'de.flapdoodle.embed', name: 'de.flapdoodle.embed.mongo', version: '4.17.0'
+    testImplementation group: 'com.h2database', name: 'h2', version: '2.3.232'
 }
 
 tasks.named('test') {
