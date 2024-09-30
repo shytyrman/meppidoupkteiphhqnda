@@ -7,6 +7,7 @@ import com.example.meppidoupkteiphhqnda.model.request.Person.UpdatePersonByDatas
 import com.example.meppidoupkteiphhqnda.repository.PersonRepository;
 import net.datafaker.Faker;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
@@ -65,47 +66,6 @@ public class BasicPersonCrudServiceTest extends AbstractTestNGSpringContextTests
         assertEquals(personFromServiceById, personFromServiceByPhoneNumber);
     }
 
-    @Test
-    public void testDeleteById() {
-
-        Long randomLong = faker.random().nextLong(1, 100);
-        PersonByDatas datasForId = new PersonByDatas(randomLong, null);
-
-        if (repository.findById(randomLong).isPresent()) {
-
-            Person person = service.find(datasForId);
-            service.delete(datasForId);
-
-            System.out.println(person);
-            assertFalse(repository.existsById(randomLong));
-        }
-        else {
-            throw new IllegalStateException("Person with such id didn't present - " + randomLong);
-        }
-
-    }
-
-    @Test
-    public void testDeleteByPhoneNumber() {
-
-        Long randomLong = faker.random().nextLong(1, 100);
-        PersonByDatas datasForId = new PersonByDatas(randomLong, null);
-
-        if (repository.findById(randomLong).isPresent()) {
-
-            Person person = service.find(datasForId);
-            PersonByDatas datasForPhoneNumber = new PersonByDatas(null, person.getPhoneNumber());
-
-            service.delete(datasForPhoneNumber);
-
-            System.out.println(person);
-            assertFalse(repository.existsById(randomLong));
-        }
-        else {
-            throw new IllegalStateException("Person with such id didn't present - " + randomLong);
-        }
-
-    }
 
     @Test
     public void testFindAll() {
@@ -217,11 +177,6 @@ public class BasicPersonCrudServiceTest extends AbstractTestNGSpringContextTests
         service.update(updateDatasForId);
 
         Person person = repository.findById(randomLong).get();
-
-        boolean nameCondition;
-        boolean birthdayCondition;
-        boolean phoneCondition;
-        boolean phoneAdditionalCondition;
 
         assertTrue(
                 changeFullName.equals(person.getFullName()) &&
@@ -344,4 +299,46 @@ public class BasicPersonCrudServiceTest extends AbstractTestNGSpringContextTests
                         changeAdditionalPhoneNumber.equals(person.getPhoneNumberAdditional())
         );
     }
+
+    @Test
+    public void testDeleteById() {
+
+        Long randomLong = faker.random().nextLong(1, 100);
+        PersonByDatas datasForId = new PersonByDatas(randomLong, null);
+
+        if (repository.findById(randomLong).isPresent()) {
+
+            Person person = service.find(datasForId);
+            service.delete(datasForId);
+
+            System.out.println(person);
+            assertFalse(repository.existsById(randomLong));
+        }
+        else {
+            throw new IllegalStateException("Person with such id didn't present - " + randomLong);
+        }
+
+    }
+
+    @Test
+    public void testDeleteByPhoneNumber() {
+
+        Long randomLong = faker.random().nextLong(1, 100);
+        PersonByDatas datasForId = new PersonByDatas(randomLong, null);
+
+        if (repository.findById(randomLong).isPresent()) {
+
+            Person person = service.find(datasForId);
+            PersonByDatas datasForPhoneNumber = new PersonByDatas(null, person.getPhoneNumber());
+
+            service.delete(datasForPhoneNumber);
+
+            System.out.println(person);
+            assertFalse(repository.existsById(randomLong));
+        }
+        else {
+            throw new IllegalStateException("Person with such id didn't present - " + randomLong);
+        }
+    }
+
 }

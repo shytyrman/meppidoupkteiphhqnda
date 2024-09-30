@@ -11,7 +11,7 @@ spring:
   data:
     mongodb:
       username: ${MONGO_USER}
-      password:
+      password: ${MONGO_PASSWORD}
       uri: mongodb://${MGHOST}:${MGPORT}/${MONGO_DB}
     jdbc:
       dialect: postgresql
