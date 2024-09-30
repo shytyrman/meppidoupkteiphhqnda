@@ -1,0 +1,2499 @@
+{
+	"info": {
+		"_postman_id": "6e7f062e-6acc-4d1d-a95d-b8c7375719d8",
+		"name": "meppidoupkteiphhqnda API",
+		"description": "meppidoupkteiphhqnda API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33336581",
+		"_collection_link": "https://www.postman.com/abojax/workspace/diploma-botaqans/collection/33336581-6e7f062e-6acc-4d1d-a95d-b8c7375719d8?action=share&source=collection_link&creator=33336581"
+	},
+	"item": [
+		{
+			"name": "docker",
+			"item": [
+				{
+					"name": "mongo",
+					"item": [
+						{
+							"name": "update",
+							"item": [
+								{
+									"name": "POST mongo/update by id",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"changeFullName\": null, //null or string\n  \"changeBirthday\": \"1985-04-23\", //null or date(string)\n  \"changePhoneNumber\": null, //null or string \n  \"changePhoneNumberAdditional\": \"<string>\", //null or string\n  \"searchId\": \"66f8e0ecb64d1c6fdb7a2e7d\", //change this to update by id\n  \"searchPhoneNumber\": null //should stay as null\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}:{{docker-port}}/mongo/update",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{docker-port}}",
+											"path": [
+												"mongo",
+												"update"
+											]
+										},
+										"description": "Updating record in mongo by id"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"changeFullName\": \"<string>\",\n  \"changeBirthday\": \"<date>\",\n  \"changePhoneNumber\": \"<string>\",\n  \"changePhoneNumberAdditional\": \"<string>\",\n  \"searchId\": \"<string>\",\n  \"searchPhoneNumber\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/mongo/update",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"mongo",
+														"update"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								},
+								{
+									"name": "POST mongo/update by phoneNumber",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"changeFullName\": \"<string>\", //null or string\n  \"changeBirthday\": null, //null or date(string)\n  \"changePhoneNumber\": \"<string>\", //null or string\n  \"changePhoneNumberAdditional\": \"<string>\", //null or string\n  \"searchId\": null, //has to stay as null\n  \"searchPhoneNumber\": \"(730) 214-0906\" //change this to update by phoneNumber\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}:{{docker-port}}/mongo/update",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{docker-port}}",
+											"path": [
+												"mongo",
+												"update"
+											]
+										},
+										"description": "Updating record in mongo by phoneNumber"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"changeFullName\": \"<string>\",\n  \"changeBirthday\": \"<date>\",\n  \"changePhoneNumber\": \"<string>\",\n  \"changePhoneNumberAdditional\": \"<string>\",\n  \"searchId\": \"<string>\",\n  \"searchPhoneNumber\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/mongo/update",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"mongo",
+														"update"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								}
+							],
+							"description": "Updating requests"
+						},
+						{
+							"name": "delete",
+							"item": [
+								{
+									"name": "DELETE mongo/delete by id",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"66f9ff7b08fbc31975fcbaa0\", // change this\n  \"phoneNumber\": null //can be null or string\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}:{{docker-port}}/mongo/delete",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{docker-port}}",
+											"path": [
+												"mongo",
+												"delete"
+											]
+										},
+										"description": "Deleting record in mongo by id"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"<string>\",\n  \"phoneNumber\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/mongo/delete",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"mongo",
+														"delete"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								},
+								{
+									"name": "DELETE mongo/delete by phoneNumber",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": null, //should be null\n  \"phoneNumber\": \"(305) 201-3539\" //change this\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}:{{docker-port}}/mongo/delete",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{docker-port}}",
+											"path": [
+												"mongo",
+												"delete"
+											]
+										},
+										"description": "Deleting record in mongo by phoneNumber"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"<string>\",\n  \"phoneNumber\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/mongo/delete",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"mongo",
+														"delete"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								}
+							],
+							"description": "Deleting requests"
+						},
+						{
+							"name": "get",
+							"item": [
+								{
+									"name": "GET mongo/get by id",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"66fa7ac325c39232777ac8e7\", //change this\n  \"phoneNumber\": null //this one should stay null, but can be as string\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}:{{docker-port}}/mongo/get",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{docker-port}}",
+											"path": [
+												"mongo",
+												"get"
+											]
+										},
+										"description": "Getting record in mongo by id"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/mongo/get",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"mongo",
+														"get"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								},
+								{
+									"name": "GET mongo/get by phoneNumber",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": null, //this one has stay as null\n  \"phoneNumber\": \"(641) 744-1198\" //change this\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}:{{docker-port}}/mongo/get",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{docker-port}}",
+											"path": [
+												"mongo",
+												"get"
+											]
+										},
+										"description": "Getting record in mongo by phoneNumber"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/mongo/get",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"mongo",
+														"get"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								}
+							],
+							"description": "Getting requests"
+						},
+						{
+							"name": "getAll",
+							"item": [
+								{
+									"name": "GET mongo/getAll",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"limit\": 100, // should be an integer, but can take string also\n  \"offset\": 13 // has to be an integer, but can take string also\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}:{{docker-port}}/mongo/getAll",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{docker-port}}",
+											"path": [
+												"mongo",
+												"getAll"
+											]
+										},
+										"description": "Getting all records in mongo with limitation and offset"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/mongo/getAll",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"mongo",
+														"getAll"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								}
+							],
+							"description": "Getiing all records requests"
+						}
+					]
+				},
+				{
+					"name": "postgres",
+					"item": [
+						{
+							"name": "update",
+							"item": [
+								{
+									"name": "POST update by id",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"changeFullName\": \"skdjfksdjf\", //null or string\n  \"changeBirthday\": null, //null or date(string)\n  \"changePhoneNumber\": null, //null or string\n  \"changePhoneNumberAdditional\": \"<string>\", //null or string\n  \"searchId\": 10, //should be integer, but can work with string value\n  \"searchPhoneNumber\": null //should stay as null but can take string\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}:{{docker-port}}/update",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{docker-port}}",
+											"path": [
+												"update"
+											]
+										},
+										"description": "Updating record in postgres by id"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"changeFullName\": \"<string>\",\n  \"changeBirthday\": \"<date>\",\n  \"changePhoneNumber\": \"<string>\",\n  \"changePhoneNumberAdditional\": \"<string>\",\n  \"searchId\": \"<long>\",\n  \"searchPhoneNumber\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/update",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"update"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								},
+								{
+									"name": "POST update by phoneNumber",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"changeFullName\": \"Name Surname\", //null or string\n  \"changeBirthday\": \"1083-02-14\", //null or date(string)\n  \"changePhoneNumber\": \"<string>\", //null or string \n  \"changePhoneNumberAdditional\": \"<string>\", //null or string\n  \"searchId\": null, //has to stay null\n  \"searchPhoneNumber\": \"(272) 563-1931\" //change this to update by phoneNumber\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}:{{docker-port}}/update",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{docker-port}}",
+											"path": [
+												"update"
+											]
+										},
+										"description": "Updating record in postgres by phoneNumber"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"changeFullName\": \"<string>\",\n  \"changeBirthday\": \"<date>\",\n  \"changePhoneNumber\": \"<string>\",\n  \"changePhoneNumberAdditional\": \"<string>\",\n  \"searchId\": \"<long>\",\n  \"searchPhoneNumber\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/update",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"update"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								}
+							],
+							"description": "Updating requests"
+						},
+						{
+							"name": "delete",
+							"item": [
+								{
+									"name": "DELETE delete by id",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": 22, //change this to delete by id\n  \"phoneNumber\": null //should stay as null, but can take string\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}:{{docker-port}}/delete",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{docker-port}}",
+											"path": [
+												"delete"
+											]
+										},
+										"description": "Deleting record in postgres by id"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"<long>\",\n  \"phoneNumber\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/delete",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"delete"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								},
+								{
+									"name": "DELETE delete by phoneNumber",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": null, //has to stay as null \n  \"phoneNumber\": \"(214) 762-3524\" //change this to delete by phoneNumber\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}:{{docker-port}}/delete",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{docker-port}}",
+											"path": [
+												"delete"
+											]
+										},
+										"description": "Deleting record in postgres by phoneNumber"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"<long>\",\n  \"phoneNumber\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/delete",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"delete"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								}
+							],
+							"description": "Deleting requests"
+						},
+						{
+							"name": "get",
+							"item": [
+								{
+									"name": "GET get by id",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": 56, //change this to get by id\n  \"phoneNumber\": null //should stay as null, but can take string\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}:{{docker-port}}/get",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{docker-port}}",
+											"path": [
+												"get"
+											]
+										},
+										"description": "Getting record in postgres by id"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/get",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"get"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								},
+								{
+									"name": "GET get by phoneNumber",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": null, //has to stay as null\n  \"phoneNumber\": \"(983) 488-0086\" //change this to get by phoneNumber\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}:{{docker-port}}/get",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{docker-port}}",
+											"path": [
+												"get"
+											]
+										},
+										"description": "Getting record in postgres by phoneNumber"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/get",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"get"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								}
+							],
+							"description": "Getting requests"
+						},
+						{
+							"name": "getAll",
+							"item": [
+								{
+									"name": "GET getAll",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"limit\": 25, //should be an integer but can take string\n  \"offset\": \"3\" //should be an integer but can take string\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}:{{docker-port}}/getAll",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{docker-port}}",
+											"path": [
+												"getAll"
+											]
+										},
+										"description": "Getting all records in postgres with limitation and offset"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/getAll",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"getAll"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								}
+							],
+							"description": "Getiing all records requests"
+						}
+					]
+				}
+			],
+			"description": "Consists api calls for docker run."
+		},
+		{
+			"name": "local",
+			"item": [
+				{
+					"name": "mongo",
+					"item": [
+						{
+							"name": "update",
+							"item": [
+								{
+									"name": "POST mongo/update by id",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"changeFullName\": null, //null or string\n  \"changeBirthday\": \"1985-04-23\", //null or date(string)\n  \"changePhoneNumber\": null, //null or string \n  \"changePhoneNumberAdditional\": \"<string>\", //null or string\n  \"searchId\": \"66f8e0ecb64d1c6fdb7a2e7d\", //change this to update by id\n  \"searchPhoneNumber\": null //should stay as null\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}:{{port}}/mongo/update",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"mongo",
+												"update"
+											]
+										},
+										"description": "Updating record in mongo by id"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"changeFullName\": \"<string>\",\n  \"changeBirthday\": \"<date>\",\n  \"changePhoneNumber\": \"<string>\",\n  \"changePhoneNumberAdditional\": \"<string>\",\n  \"searchId\": \"<string>\",\n  \"searchPhoneNumber\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://meppidoupkteiphhqnda/mongo/update",
+													"protocol": "https",
+													"host": [
+														"meppidoupkteiphhqnda"
+													],
+													"path": [
+														"mongo",
+														"update"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								},
+								{
+									"name": "POST mongo/update by phoneNumber",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"changeFullName\": \"<string>\", //null or string\n  \"changeBirthday\": null, //null or date(string)\n  \"changePhoneNumber\": \"<string>\", //null or string\n  \"changePhoneNumberAdditional\": \"<string>\", //null or string\n  \"searchId\": null, //has to stay as null\n  \"searchPhoneNumber\": \"(730) 214-0906\" //change this to update by phoneNumber\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}:{{port}}/mongo/update",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"mongo",
+												"update"
+											]
+										},
+										"description": "Updating record in mongo by phoneNumber"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"changeFullName\": \"<string>\",\n  \"changeBirthday\": \"<date>\",\n  \"changePhoneNumber\": \"<string>\",\n  \"changePhoneNumberAdditional\": \"<string>\",\n  \"searchId\": \"<string>\",\n  \"searchPhoneNumber\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://meppidoupkteiphhqnda/mongo/update",
+													"protocol": "https",
+													"host": [
+														"meppidoupkteiphhqnda"
+													],
+													"path": [
+														"mongo",
+														"update"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								}
+							],
+							"description": "Updating requests"
+						},
+						{
+							"name": "delete",
+							"item": [
+								{
+									"name": "DELETE mongo/delete by id",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"66f9ff7b08fbc31975fcbaa0\", // change this\n  \"phoneNumber\": null //can be null or string\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}:{{port}}/mongo/delete",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"mongo",
+												"delete"
+											]
+										},
+										"description": "Deleting record in mongo by id"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"<string>\",\n  \"phoneNumber\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://meppidoupkteiphhqnda/mongo/delete",
+													"protocol": "https",
+													"host": [
+														"meppidoupkteiphhqnda"
+													],
+													"path": [
+														"mongo",
+														"delete"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								},
+								{
+									"name": "DELETE mongo/delete by phoneNumber",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": null, //should be null\n  \"phoneNumber\": \"(305) 201-3539\" //change this\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}:{{port}}/mongo/delete",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"mongo",
+												"delete"
+											]
+										},
+										"description": "Deleting record in mongo by phoneNumber"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"<string>\",\n  \"phoneNumber\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://meppidoupkteiphhqnda/mongo/delete",
+													"protocol": "https",
+													"host": [
+														"meppidoupkteiphhqnda"
+													],
+													"path": [
+														"mongo",
+														"delete"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								}
+							],
+							"description": "Deleting requests"
+						},
+						{
+							"name": "get",
+							"item": [
+								{
+									"name": "GET mongo/get by id",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"66f8e0ecb64d1c6fdb7a2e7b\", //change this\n  \"phoneNumber\": null //this one should stay null, but can be as string\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}:{{port}}/mongo/get",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"mongo",
+												"get"
+											]
+										},
+										"description": "Getting record in mongo by id"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "https://meppidoupkteiphhqnda/mongo/get",
+													"protocol": "https",
+													"host": [
+														"meppidoupkteiphhqnda"
+													],
+													"path": [
+														"mongo",
+														"get"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								},
+								{
+									"name": "GET mongo/get by phoneNumber",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": null, //this one has stay as null\n  \"phoneNumber\": \"(472) 461-4477\" //change this\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}:{{port}}/mongo/get",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"mongo",
+												"get"
+											]
+										},
+										"description": "Getting record in mongo by phoneNumber"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "https://meppidoupkteiphhqnda/mongo/get",
+													"protocol": "https",
+													"host": [
+														"meppidoupkteiphhqnda"
+													],
+													"path": [
+														"mongo",
+														"get"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								}
+							],
+							"description": "Getting requests"
+						},
+						{
+							"name": "getAll",
+							"item": [
+								{
+									"name": "GET mongo/getAll",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"limit\": 100, // should be an integer, but can take string also\n  \"offset\": 13 // has to be an integer, but can take string also\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}:{{port}}/mongo/getAll",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"mongo",
+												"getAll"
+											]
+										},
+										"description": "Getting all records in mongo with limitation and offset"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "https://meppidoupkteiphhqnda/mongo/getAll",
+													"protocol": "https",
+													"host": [
+														"meppidoupkteiphhqnda"
+													],
+													"path": [
+														"mongo",
+														"getAll"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								}
+							],
+							"description": "Getiing all records requests"
+						}
+					]
+				},
+				{
+					"name": "postgres",
+					"item": [
+						{
+							"name": "update",
+							"item": [
+								{
+									"name": "POST update by id",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"changeFullName\": \"skdjfksdjf\", //null or string\n  \"changeBirthday\": null, //null or date(string)\n  \"changePhoneNumber\": null, //null or string\n  \"changePhoneNumberAdditional\": \"<string>\", //null or string\n  \"searchId\": 10, //should be integer, but can work with string value\n  \"searchPhoneNumber\": null //should stay as null but can take string\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}:{{port}}/update",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"update"
+											]
+										},
+										"description": "Updating record in postgres by id"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"changeFullName\": \"<string>\",\n  \"changeBirthday\": \"<date>\",\n  \"changePhoneNumber\": \"<string>\",\n  \"changePhoneNumberAdditional\": \"<string>\",\n  \"searchId\": \"<long>\",\n  \"searchPhoneNumber\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://meppidoupkteiphhqnda/update",
+													"protocol": "https",
+													"host": [
+														"meppidoupkteiphhqnda"
+													],
+													"path": [
+														"update"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								},
+								{
+									"name": "POST update by phoneNumber",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"changeFullName\": \"Name Surname\", //null or string\n  \"changeBirthday\": \"1083-02-14\", //null or date(string)\n  \"changePhoneNumber\": \"<string>\", //null or string \n  \"changePhoneNumberAdditional\": \"<string>\", //null or string\n  \"searchId\": null, //has to stay null\n  \"searchPhoneNumber\": \"(272) 563-1931\" //change this to update by phoneNumber\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}:{{port}}/update",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"update"
+											]
+										},
+										"description": "Updating record in postgres by phoneNumber"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"changeFullName\": \"<string>\",\n  \"changeBirthday\": \"<date>\",\n  \"changePhoneNumber\": \"<string>\",\n  \"changePhoneNumberAdditional\": \"<string>\",\n  \"searchId\": \"<long>\",\n  \"searchPhoneNumber\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://meppidoupkteiphhqnda/update",
+													"protocol": "https",
+													"host": [
+														"meppidoupkteiphhqnda"
+													],
+													"path": [
+														"update"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								}
+							],
+							"description": "Updating requests"
+						},
+						{
+							"name": "delete",
+							"item": [
+								{
+									"name": "DELETE delete by id",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": 22, //change this to delete by id\n  \"phoneNumber\": null //should stay as null, but can take string\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}:{{port}}/delete",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"delete"
+											]
+										},
+										"description": "Deleting record in postgres by id"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"<long>\",\n  \"phoneNumber\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://meppidoupkteiphhqnda/delete",
+													"protocol": "https",
+													"host": [
+														"meppidoupkteiphhqnda"
+													],
+													"path": [
+														"delete"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								},
+								{
+									"name": "DELETE delete by phoneNumber",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": null, //has to stay as null \n  \"phoneNumber\": \"(214) 762-3524\" //change this to delete by phoneNumber\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}:{{port}}/delete",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"delete"
+											]
+										},
+										"description": "Deleting record in postgres by phoneNumber"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"<long>\",\n  \"phoneNumber\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://meppidoupkteiphhqnda/delete",
+													"protocol": "https",
+													"host": [
+														"meppidoupkteiphhqnda"
+													],
+													"path": [
+														"delete"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								}
+							],
+							"description": "Deleting requests"
+						},
+						{
+							"name": "get",
+							"item": [
+								{
+									"name": "GET get by id",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": 56, //change this to get by id\n  \"phoneNumber\": null //should stay as null, but can take string\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}:{{port}}/get",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"get"
+											]
+										},
+										"description": "Getting record in postgres by id"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "https://meppidoupkteiphhqnda/get",
+													"protocol": "https",
+													"host": [
+														"meppidoupkteiphhqnda"
+													],
+													"path": [
+														"get"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								},
+								{
+									"name": "GET get by phoneNumber",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": null, //has to stay as null\n  \"phoneNumber\": \"(983) 488-0086\" //change this to get by phoneNumber\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}:{{port}}/get",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"get"
+											]
+										},
+										"description": "Getting record in postgres by phoneNumber"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "https://meppidoupkteiphhqnda/get",
+													"protocol": "https",
+													"host": [
+														"meppidoupkteiphhqnda"
+													],
+													"path": [
+														"get"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								}
+							],
+							"description": "Getting requests"
+						},
+						{
+							"name": "getAll",
+							"item": [
+								{
+									"name": "GET getAll",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"limit\": 25, //should be an integer but can take string\n  \"offset\": \"3\" //should be an integer but can take string\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}:{{port}}/getAll",
+											"host": [
+												"{{host}}"
+											],
+											"port": "{{port}}",
+											"path": [
+												"getAll"
+											]
+										},
+										"description": "Getting all records in postgres with limitation and offset"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "https://meppidoupkteiphhqnda/getAll",
+													"protocol": "https",
+													"host": [
+														"meppidoupkteiphhqnda"
+													],
+													"path": [
+														"getAll"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										}
+									]
+								}
+							],
+							"description": "Getiing all records requests"
+						}
+					]
+				}
+			],
+			"description": "Consists api calls for local run."
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://meppidoupkteiphhqnda"
+		},
+		{
+			"key": "host",
+			"value": "localhost",
+			"type": "default"
+		},
+		{
+			"key": "port",
+			"value": "8081",
+			"type": "default"
+		},
+		{
+			"key": "docker-port",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
