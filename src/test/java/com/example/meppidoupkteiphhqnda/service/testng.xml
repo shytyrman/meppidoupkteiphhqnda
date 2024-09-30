@@ -1,0 +1,8 @@
+<suite name="First Suite" verbose="1">
+    <test name="Crud Test">
+        <classes>
+            <class name="com.example.meppidoupkteiphhqnda.service.PersonCrud.BasicPersonCrudServiceTest" />
+            <class name="com.example.meppidoupkteiphhqnda.service.PersonMongoCrud.BasicPersonMongoCrudServiceTest" />
+        </classes>
+    </test>
+</suite>

@@ -10,5 +10,6 @@ spring:
       dialect: h2
     mongodb:
       uri: mongodb://localhost:27017/test
+      database: test
 server:
   port: 8080
