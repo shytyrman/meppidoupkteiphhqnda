@@ -1,13 +1,15 @@
-package com.example.meppidoupkteiphhqnda.service.PersonCrud;
+package com.example.meppidoupkteiphhqnda.service.PersonMongoCrud;
 
 import com.example.meppidoupkteiphhqnda.model.Person;
+import com.example.meppidoupkteiphhqnda.model.PersonMongo;
 import com.example.meppidoupkteiphhqnda.model.request.Filter;
 import com.example.meppidoupkteiphhqnda.model.request.Person.PersonByDatas;
 import com.example.meppidoupkteiphhqnda.model.request.Person.UpdatePersonByDatas;
-import com.example.meppidoupkteiphhqnda.repository.PersonRepository;
+import com.example.meppidoupkteiphhqnda.model.request.PersonMongo.PersonMongoByDatas;
+import com.example.meppidoupkteiphhqnda.model.request.PersonMongo.UpdatePersonMongoByDatas;
+import com.example.meppidoupkteiphhqnda.repository.PersonMongoRepository;
 import net.datafaker.Faker;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
@@ -17,31 +19,28 @@ import java.time.LocalDate;
 import java.util.List;
 
 import static org.testng.Assert.*;
-
 @ActiveProfiles("test")
 @SpringBootTest
-//@DataMongoTest
-//@AutoConfigureDataMongo
-//@ExtendWith(SpringExtension.class)
-public class BasicPersonCrudServiceTest extends AbstractTestNGSpringContextTests {
-
+public class BasicPersonMongoCrudServiceTest extends AbstractTestNGSpringContextTests {
 
     @Autowired
-    PersonCrudService service;
+    PersonMongoCrudService service;
 
     @Autowired
-    PersonRepository repository;
+    PersonMongoRepository repository;
 
     Faker faker = new Faker();
 
     @Test
     public void searchById() {
 
-        Long randomLong = faker.random().nextLong(1, 100);
-        PersonByDatas datas = new PersonByDatas(randomLong , null);
+        List<PersonMongo> persons = repository.findAll();
 
-        Person personFromService = service.find(datas);
-        Person personFromRepository = repository.findById(randomLong).get();
+        PersonMongo person = persons.iterator().next();
+        PersonMongoByDatas datas = new PersonMongoByDatas(person.getId(), null);
+
+        PersonMongo personFromService = service.find(datas);
+        PersonMongo personFromRepository = repository.findById(person.getId()).get();
 
         System.out.println(personFromService);
         System.out.println(personFromRepository);
@@ -52,13 +51,15 @@ public class BasicPersonCrudServiceTest extends AbstractTestNGSpringContextTests
     @Test
     public void searchByPhoneNumber() {
 
-        Long randomLong = faker.random().nextLong(1, 100);
-        PersonByDatas datasForId = new PersonByDatas(randomLong, null);
+        List<PersonMongo> persons = repository.findAll();
 
-        Person personFromServiceById = service.find(datasForId);
+        PersonMongo person = persons.iterator().next();
+        PersonMongoByDatas datasForId = new PersonMongoByDatas(person.getId(), null);
 
-        PersonByDatas datasForPhoneNumber = new PersonByDatas(null, personFromServiceById.getPhoneNumber());
-        Person personFromServiceByPhoneNumber = service.find(datasForPhoneNumber);
+        PersonMongo personFromServiceById = service.find(datasForId);
+
+        PersonMongoByDatas datasForPhoneNumber = new PersonMongoByDatas(null, personFromServiceById.getPhoneNumber());
+        PersonMongo personFromServiceByPhoneNumber = service.find(datasForPhoneNumber);
 
         System.out.println(personFromServiceById);
         System.out.println(personFromServiceByPhoneNumber);
@@ -69,21 +70,26 @@ public class BasicPersonCrudServiceTest extends AbstractTestNGSpringContextTests
     @Test
     public void testFindAll() {
 
+        List<PersonMongo> personsBefore = repository.findAll();
+
         Integer limit = faker.random().nextInt(0, 100);
         Integer offset = faker.random().nextInt(0, 100);
 
         Filter filter = new Filter(limit, offset);
 
-        List<Person> persons = service.findAll(filter);
+        List<PersonMongo> persons = service.findAll(filter);
 
-        assertTrue(persons.size() <= limit && persons.get(0).getId() > offset);
+        assertTrue(persons.size() <= limit && persons.get(0).equals(personsBefore.get(offset)));
 
     }
 
     @Test
     public void testUpdateSomeFieldsById() {
 
-        Long randomLong = faker.random().nextLong(1, 100);
+        List<PersonMongo> persons = repository.findAll();
+        Integer randomInt = faker.random().nextInt(1, 100);
+        PersonMongo chosenPerson = persons.get(randomInt);
+        String chosenPersonId = chosenPerson.getId();
 
         String changeFullName = null;
         LocalDate changeBirthday = null;
@@ -108,13 +114,13 @@ public class BasicPersonCrudServiceTest extends AbstractTestNGSpringContextTests
             System.out.println("Additional Phone Number set!");
         }
 
-        System.out.println(repository.findById(randomLong));
+        System.out.println(chosenPerson);
 
-        UpdatePersonByDatas updateDatasForId = new UpdatePersonByDatas(changeFullName, changeBirthday, changePhoneNumber, changeAdditionalPhoneNumber, randomLong, null);
+        UpdatePersonMongoByDatas updateDatasForId = new UpdatePersonMongoByDatas(changeFullName, changeBirthday, changePhoneNumber, changeAdditionalPhoneNumber, chosenPersonId, null);
 
         service.update(updateDatasForId);
 
-        Person person = repository.findById(randomLong).get();
+        PersonMongo person = repository.findById(chosenPersonId).get();
 
         boolean nameCondition;
         boolean birthdayCondition;
@@ -152,7 +158,10 @@ public class BasicPersonCrudServiceTest extends AbstractTestNGSpringContextTests
     @Test
     public void testUpdateAllFieldsById() {
 
-        Long randomLong = faker.random().nextLong(1, 100);
+        List<PersonMongo> persons = repository.findAll();
+        Integer randomInt = faker.random().nextInt(1, 100);
+        PersonMongo chosenPerson = persons.get(randomInt);
+        String chosenPersonId = chosenPerson.getId();
 
         String changeFullName = null;
         LocalDate changeBirthday = null;
@@ -168,13 +177,13 @@ public class BasicPersonCrudServiceTest extends AbstractTestNGSpringContextTests
         changeAdditionalPhoneNumber = faker.phoneNumber().cellPhoneInternational();
         System.out.println("Additional Phone Number set!");
 
-        System.out.println(repository.findById(randomLong));
+        System.out.println(repository.findById(chosenPersonId));
 
-        UpdatePersonByDatas updateDatasForId = new UpdatePersonByDatas(changeFullName, changeBirthday, changePhoneNumber, changeAdditionalPhoneNumber, randomLong, null);
+        UpdatePersonMongoByDatas updateDatasForId = new UpdatePersonMongoByDatas(changeFullName, changeBirthday, changePhoneNumber, changeAdditionalPhoneNumber, chosenPersonId, null);
 
         service.update(updateDatasForId);
 
-        Person person = repository.findById(randomLong).get();
+        PersonMongo person = repository.findById(chosenPersonId).get();
 
         assertTrue(
                 changeFullName.equals(person.getFullName()) &&
@@ -187,7 +196,10 @@ public class BasicPersonCrudServiceTest extends AbstractTestNGSpringContextTests
     @Test
     public void testUpdateSomeFieldsPhoneNumber() {
 
-        Long randomLong = faker.random().nextLong(1, 100);
+        List<PersonMongo> persons = repository.findAll();
+        Integer randomInt = faker.random().nextInt(1, 100);
+        PersonMongo chosenPerson = persons.get(randomInt);
+        String chosenPersonId = chosenPerson.getId();
 
         String changeFullName = null;
         LocalDate changeBirthday = null;
@@ -212,15 +224,15 @@ public class BasicPersonCrudServiceTest extends AbstractTestNGSpringContextTests
             System.out.println("Additional Phone Number set!");
         }
 
-        System.out.println(repository.findById(randomLong));
+        System.out.println(repository.findById(chosenPersonId));
 
-        Person personBefore = repository.findById(randomLong).get();
+        PersonMongo personBefore = repository.findById(chosenPersonId).get();
 
-        UpdatePersonByDatas updateDatasForPhoneNumber = new UpdatePersonByDatas(changeFullName, changeBirthday, changePhoneNumber, changeAdditionalPhoneNumber, null, personBefore.getPhoneNumber());
+        UpdatePersonMongoByDatas updateDatasForPhoneNumber = new UpdatePersonMongoByDatas(changeFullName, changeBirthday, changePhoneNumber, changeAdditionalPhoneNumber, null, personBefore.getPhoneNumber());
 
         service.update(updateDatasForPhoneNumber);
 
-        Person person = repository.findById(randomLong).get();
+        PersonMongo person = repository.findById(chosenPersonId).get();
 
 
         boolean nameCondition;
@@ -259,7 +271,10 @@ public class BasicPersonCrudServiceTest extends AbstractTestNGSpringContextTests
     @Test
     public void testUpdateAllFieldsByPhoneNumber() {
 
-        Long randomLong = faker.random().nextLong(1, 100);
+        List<PersonMongo> persons = repository.findAll();
+        Integer randomInt = faker.random().nextInt(1, 100);
+        PersonMongo chosenPerson = persons.get(randomInt);
+        String chosenPersonId = chosenPerson.getId();
 
         String changeFullName = null;
         LocalDate changeBirthday = null;
@@ -275,15 +290,15 @@ public class BasicPersonCrudServiceTest extends AbstractTestNGSpringContextTests
         changeAdditionalPhoneNumber = faker.phoneNumber().cellPhoneInternational();
         System.out.println("Additional Phone Number set!");
 
-        System.out.println(repository.findById(randomLong));
+        System.out.println(repository.findById(chosenPersonId));
 
-        Person personBefore = repository.findById(randomLong).get();
+        PersonMongo personBefore = repository.findById(chosenPersonId).get();
 
-        UpdatePersonByDatas updateDatasForPhoneNumber = new UpdatePersonByDatas(changeFullName, changeBirthday, changePhoneNumber, changeAdditionalPhoneNumber, null, personBefore.getPhoneNumber());
+        UpdatePersonMongoByDatas updateDatasForPhoneNumber = new UpdatePersonMongoByDatas(changeFullName, changeBirthday, changePhoneNumber, changeAdditionalPhoneNumber, null, personBefore.getPhoneNumber());
 
         service.update(updateDatasForPhoneNumber);
 
-        Person person = repository.findById(randomLong).get();
+        PersonMongo person = repository.findById(chosenPersonId).get();
 
         boolean nameCondition;
         boolean birthdayCondition;
@@ -301,19 +316,23 @@ public class BasicPersonCrudServiceTest extends AbstractTestNGSpringContextTests
     @Test(priority = 1)
     public void testDeleteById() {
 
-        Long randomLong = faker.random().nextLong(1, 100);
-        PersonByDatas datasForId = new PersonByDatas(randomLong, null);
+        List<PersonMongo> persons = repository.findAll();
+        Integer randomInt = faker.random().nextInt(1, 100);
+        PersonMongo chosenPerson = persons.get(randomInt);
+        String chosenPersonId = chosenPerson.getId();
 
-        if (repository.findById(randomLong).isPresent()) {
+        PersonMongoByDatas datasForId = new PersonMongoByDatas(chosenPersonId, null);
 
-            Person person = service.find(datasForId);
+        if (repository.findById(chosenPersonId).isPresent()) {
+
+            PersonMongo person = service.find(datasForId);
             service.delete(datasForId);
 
             System.out.println(person);
-            assertFalse(repository.existsById(randomLong));
+            assertFalse(repository.existsById(chosenPersonId));
         }
         else {
-            throw new IllegalStateException("Person with such id didn't present - " + randomLong);
+            throw new IllegalStateException("PersonMongo with such id didn't present - " + chosenPersonId);
         }
 
     }
@@ -321,22 +340,25 @@ public class BasicPersonCrudServiceTest extends AbstractTestNGSpringContextTests
     @Test(priority = 1)
     public void testDeleteByPhoneNumber() {
 
-        Long randomLong = faker.random().nextLong(1, 100);
-        PersonByDatas datasForId = new PersonByDatas(randomLong, null);
+        List<PersonMongo> persons = repository.findAll();
+        Integer randomInt = faker.random().nextInt(1, 100);
+        PersonMongo chosenPerson = persons.get(randomInt);
+        String chosenPersonId = chosenPerson.getId();
 
-        if (repository.findById(randomLong).isPresent()) {
+        PersonMongoByDatas datasForId = new PersonMongoByDatas(chosenPersonId, null);
 
-            Person person = service.find(datasForId);
-            PersonByDatas datasForPhoneNumber = new PersonByDatas(null, person.getPhoneNumber());
+        if (repository.findById(chosenPersonId).isPresent()) {
+
+            PersonMongo person = service.find(datasForId);
+            PersonMongoByDatas datasForPhoneNumber = new PersonMongoByDatas(null, person.getPhoneNumber());
 
             service.delete(datasForPhoneNumber);
 
             System.out.println(person);
-            assertFalse(repository.existsById(randomLong));
+            assertFalse(repository.existsById(chosenPersonId));
         }
         else {
-            throw new IllegalStateException("Person with such id didn't present - " + randomLong);
+            throw new IllegalStateException("PersonMongo with such id didn't present - " + chosenPersonId);
         }
     }
-
 }
